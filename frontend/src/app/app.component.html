@@ -13,35 +13,37 @@
 
 <main class="container">
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 mt-4">
-    <ng-container *ngFor="let note of notes">
-      <ng-container *ngIf="note.status !== NoteStatus.Archived || archivedVisible">
-        <div class="col">
-          <div class="card" [class.text-body-tertiary]="note.status === NoteStatus.Archived">
-            <div class="card-body">
-              <h5 class="card-title mb-0">{{note.title}}</h5>
+    <ng-container *ngIf="notes$ | async as notes">
+      <ng-container *ngFor="let note of notes">
+        <ng-container *ngIf="note.status !== NoteStatus.Archived || archivedVisible">
+          <div class="col">
+            <div class="card" [class.text-body-tertiary]="note.status === NoteStatus.Archived">
+              <div class="card-body">
+                <h5 class="card-title mb-0">{{note.title}}</h5>
 
-              <ng-container *ngIf="note.text as text">
-                <p class="card-text mt-2">{{text}}</p>
+                <ng-container *ngIf="note.text as text">
+                  <p class="card-text mt-2">{{text}}</p>
+                </ng-container>
+              </div>
+
+              <ng-container *ngIf="note.list as list">
+                <ul class="list-group list-group-flush">
+                  <ng-container *ngFor="let task of list">
+                    <ng-container *ngIf="task.status !== NoteStatus.Archived || archivedVisible">
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input me-1" type="checkbox" id="task{{task.id}}"
+                            [checked]="task.status === NoteStatus.Closed" [disabled]="task.status === NoteStatus.Archived">
+                          <label class="form-check-label" for="task{{task.id}}">{{task.title}}</label>
+                        </div>
+                      </li>
+                    </ng-container>
+                  </ng-container>
+                </ul>
               </ng-container>
             </div>
-
-            <ng-container *ngIf="note.list as list">
-              <ul class="list-group list-group-flush">
-                <ng-container *ngFor="let task of list">
-                  <ng-container *ngIf="task.status !== NoteStatus.Archived || archivedVisible">
-                    <li class="list-group-item">
-                      <div class="form-check">
-                        <input class="form-check-input me-1" type="checkbox" id="task{{task.id}}"
-                          [checked]="task.status === NoteStatus.Closed" [disabled]="task.status === NoteStatus.Archived">
-                        <label class="form-check-label" for="task{{task.id}}">{{task.title}}</label>
-                      </div>
-                    </li>
-                  </ng-container>
-                </ng-container>
-              </ul>
-            </ng-container>
           </div>
-        </div>
+        </ng-container>
       </ng-container>
     </ng-container>
   </div>

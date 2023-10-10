@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Note } from './models/note';
 import { NoteStatus } from './models/note-status';
 
@@ -15,50 +17,17 @@ export class AppComponent implements OnInit {
   showArchivedCheckbox = new FormControl(false, { nonNullable: true });
   archivedVisible = false;
 
-  notes: Note[] = [
-    {
-      id: 1,
-      title: 'EdConnect',
-      status: NoteStatus.Archived,
-      text: 'Create a demo application and learn Kotlin basics',
-    },
-    {
-      id: 2,
-      title: 'EdConnect',
-      status: NoteStatus.Open,
-      text: 'Show a demo application to the audience',
-    },
-    {
-      id: 3,
-      title: 'Shopping list',
-      status: NoteStatus.Open,
-      list: [
-        {
-          id: 1,
-          title: 'Flour',
-          status: NoteStatus.Open,
-        },
-        {
-          id: 2,
-          title: 'Sugar',
-          status: NoteStatus.Open,
-        },
-        {
-          id: 3,
-          title: 'Salt',
-          status: NoteStatus.Closed,
-        },
-        {
-          id: 4,
-          title: 'Oil',
-          status: NoteStatus.Archived,
-        },
-      ],
-    },
-  ];
+  notes$?: Observable<Note[]>;
+
+  constructor(
+    private httpClient: HttpClient,
+  ) {
+  }
 
   ngOnInit(): void {
     this.showArchivedCheckbox.valueChanges
       .subscribe(archivedVisible => this.archivedVisible = archivedVisible);
+
+    this.notes$ = this.httpClient.get<Note[]>('/api/notes');
   }
 }
