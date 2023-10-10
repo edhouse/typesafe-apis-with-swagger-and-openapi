@@ -1,3 +1,14 @@
+### Frontend Compiled Output
+**/dist
+**/tmp
+**/out-tsc
+**/bazel-out
+
+### Node
+**/node_modules
+**/npm-debug.log
+**/yarn-error.log
+
 ### STS ###
 .apt_generated
 .classpath
