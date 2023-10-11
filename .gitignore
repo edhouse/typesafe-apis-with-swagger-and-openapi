@@ -1,3 +1,6 @@
+### OpenAPI Generated Files
+frontend/src/app/generated/**
+
 ### Frontend Compiled Output
 **/dist
 **/tmp

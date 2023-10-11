@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { Configuration } from './generated';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,14 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: Configuration,
+      useFactory: () => new Configuration({
+        basePath: '',
+      }),
+    },
+  ],
   bootstrap: [
     AppComponent,
   ],

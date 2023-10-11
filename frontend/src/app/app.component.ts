@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Note } from './models/note';
+import { Note, NotesControllerService } from './generated';
 import { NoteStatus } from './models/note-status';
 
 @Component({
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
   notes$?: Observable<Note[]>;
 
   constructor(
-    private httpClient: HttpClient,
+    private notesControllerService: NotesControllerService,
   ) {
   }
 
@@ -28,6 +27,6 @@ export class AppComponent implements OnInit {
     this.showArchivedCheckbox.valueChanges
       .subscribe(archivedVisible => this.archivedVisible = archivedVisible);
 
-    this.notes$ = this.httpClient.get<Note[]>('/api/notes');
+    this.notes$ = this.notesControllerService.getNotes();
   }
 }

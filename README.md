@@ -15,9 +15,12 @@ The following applications are installed:
   * Adoptium: <https://adoptium.net/>
 * Gradle (min version 8.4), you can download if from: <https://gradle.org/releases/>
 
-## Building the server app
+## Building the apps
 
 Go to the `server` directory and execute `gradle build`.
+
+With the server app running (see instructions below), go to the `frontend` directory and execute `npm run openapi:generate`.
+If you are following examples from the start, you may need to execute `npm ci` again to install new dependencies.
 
 ## Running the app
 
@@ -33,3 +36,4 @@ You can also check individual commits to see the project setup creation step by 
 The following list contains the branch name and a description of an example:
 
 * feature/example-01-http-client - Communication created manually using Angular HttpClient
+* feature/example-02-openapi-generator - Communication created by OpenAPI generator

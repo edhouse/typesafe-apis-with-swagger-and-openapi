@@ -1,7 +1,12 @@
 package cz.edhouse.typesafeapiswithswaggerandopenapi
 
+import org.springdoc.core.properties.SpringDocConfigProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Primary
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -10,6 +15,17 @@ class TypesafeApisWithSwaggerAndOpenApiApplication
 
 fun main(args: Array<String>) {
     runApplication<TypesafeApisWithSwaggerAndOpenApiApplication>(*args)
+}
+
+@Configuration
+class SpringDocConfiguration {
+
+    @Primary
+    @Bean
+    fun springDocConfig(config: SpringDocConfigProperties): SpringDocConfigProperties {
+        config.defaultProducesMediaType = MediaType.APPLICATION_JSON_VALUE
+        return config
+    }
 }
 
 enum class NoteStatus {
