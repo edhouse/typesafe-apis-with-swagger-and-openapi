@@ -1,0 +1,82 @@
+# Ignore project files not required in Docker build
+
+.git
+.gitignore
+
+.dockerignore
+Dockerfile
+*.Dockerfile
+*compose.yml
+
+README.md
+
+# Contents of .gitignore follows, customized to properly ignore specified files by Docker
+
+### OpenAPI Generated Files
+frontend/src/app/generated/**
+
+### Frontend Compiled Output
+**/dist
+**/tmp
+**/out-tsc
+**/bazel-out
+
+### Node
+**/node_modules
+**/npm-debug.log
+**/yarn-error.log
+
+### Server Build Output
+**/.gradle
+**/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+**/.apt_generated
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings
+**/.springBeans
+**/.sts4-cache
+**/bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+**/.idea
+**/*.iws
+**/*.iml
+**/*.ipr
+**/out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
+
+### VS Code ###
+**/.vscode/
+
+### Other IDEs and editors
+**/.c9/
+**/*.launch
+**/*.sublime-workspace
+
+### Miscellaneous
+**/.angular/cache
+**/.sass-cache/
+**/connect.lock
+**/coverage
+**/libpeerconnection.log
+**/testem.log
+**/typings
+
+### System files
+**/.DS_Store
+**/Thumbs.db
