@@ -1,5 +1,6 @@
 package cz.edhouse.typesafeapiswithswaggerandopenapi
 
+import io.swagger.v3.oas.annotations.media.Schema
 import org.springdoc.core.properties.SpringDocConfigProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -28,6 +29,7 @@ class SpringDocConfiguration {
     }
 }
 
+@Schema(enumAsRef = true)
 enum class NoteStatus {
     OPEN, CLOSED, ARCHIVED
 }

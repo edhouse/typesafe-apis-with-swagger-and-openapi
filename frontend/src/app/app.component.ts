@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Note, NotesControllerService } from './generated';
-import { NoteStatus } from './models/note-status';
+import { Note, NoteStatus, NotesControllerService } from './generated';
 
 @Component({
   selector: 'app-root',

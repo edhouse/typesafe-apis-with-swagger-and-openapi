@@ -37,3 +37,4 @@ The following list contains the branch name and a description of an example:
 
 * feature/example-01-http-client - Communication created manually using Angular HttpClient
 * feature/example-02-openapi-generator - Communication created by OpenAPI generator
+* feature/example-03-enums - Enums handled as references

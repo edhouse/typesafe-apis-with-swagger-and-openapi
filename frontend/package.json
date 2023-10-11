@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "openapi:clean": "rimraf src/app/generated",
-    "openapi:generate": "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o src/app/generated",
+    "openapi:generate": "openapi-generator-cli generate -i http://localhost:8080/v3/api-docs -g typescript-angular -o src/app/generated --additional-properties=stringEnums=true",
     "openapi:regenerate": "npm run openapi:clean && npm run openapi:generate"
   },
   "private": true,
