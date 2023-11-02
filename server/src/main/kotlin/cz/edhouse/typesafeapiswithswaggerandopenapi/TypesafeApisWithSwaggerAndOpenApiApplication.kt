@@ -18,6 +18,10 @@ fun main(args: Array<String>) {
     runApplication<TypesafeApisWithSwaggerAndOpenApiApplication>(*args)
 }
 
+/**
+ * The Springdoc by default documents the returning value from endpoints as "* / *".
+ * That causes trouble with the generated code, so the Springdoc is configured to return "application/JSON" by default.
+ */
 @Configuration
 class SpringDocConfiguration {
 
@@ -29,6 +33,11 @@ class SpringDocConfiguration {
     }
 }
 
+/**
+ * Enums are by default generated as string values listed on each model.
+ * That causes the generator to create separate enum models for each usage.
+ * By generating enums as a reference, a single enum is created by the generator.
+ */
 @Schema(enumAsRef = true)
 enum class NoteStatus {
     OPEN, CLOSED, ARCHIVED
